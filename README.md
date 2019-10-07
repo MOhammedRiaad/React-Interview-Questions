@@ -5152,7 +5152,7 @@ Bootstrap can be added to your React app in a three possible ways
   If you are using a build tool or a module bundler such as Webpack, then this is the preferred option for adding Bootstrap to your React application
   ```javascript
   npm install bootstrap
-  ``
+  ```
 3. React Bootstrap Package:
   In this case, you can add Bootstrap to our React app is by using a package that has rebuilt Bootstrap components to work particularly as React components. Below packages are popular in this category,
   1. react-bootstrap
