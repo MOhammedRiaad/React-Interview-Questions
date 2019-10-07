@@ -5335,7 +5335,7 @@ ReactDOM.unstable_createRoot(domNode).render(<App />);
 Both refers the same thing. Previously concurrent Mode being referred to as "Async Mode" by React team. The name has been changed to highlight React’s ability to perform work on different priority levels. So it avoids the confusion from other approaches to Async Rendering.
 
 ### 321. Can I use javascript urls in react16.9?
-Yes, you can use javascript: URLs but it will log a warning in the console. Because URLs starting with javascript: are dangerous by including unsanitized output in a tag like <a href> and create a security hole.
+Yes, you can use javascript: URLs but it will log a warning in the console. Because URLs starting with javascript: are dangerous by including unsanitized output in a tag like ```<a href>``` and create a security hole.
 ```javascript
 const companyProfile = {
   website: "javascript: alert('Your website is hacked')",
