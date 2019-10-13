@@ -348,7 +348,7 @@ React is an **open-source frontend JavaScript library** which is used for buildi
 
 The major features of React are:
 
-* It uses **VirtualDOM** instead RealDOM considering that RealDOM manipulations are expensive.
+* It uses **VirtualDOM** instead of RealDOM considering that RealDOM manipulations are expensive.
 * Supports **server-side rendering**.
 * Follows **Unidirectional** data flow or data binding.
 * Uses **reusable/composable** UI components to develop the view.
@@ -445,11 +445,11 @@ class Greeting extends React.Component {
 ### 6. When to use a Class Component over a Function Component?
 
 If the component needs *state or lifecycle methods* then use class component otherwise use function component.
-*However, from React 16.8 with the addition of Hooks, you could use state , lifecycle  methods and other features that were only available in class component right in your function component.*
+*However, from React 16.8 with the addition of Hooks, you could use state, lifecycle  methods and other features that were only available in class component right in your function component.*
 
 ### 7. What are Pure Components?
 
-*`React.PureComponent`* is exactly the same as *`React.Component`* except that it handles the `shouldComponentUpdate()` method for you. When props or state changes, *PureComponent* will do a shallow comparison on both props and state. *Component* on the other hand won't compare current props and state to next out of the box. Thus, the component will re-render by default whenever `shouldComponentUpdate` is called.
+*`React.PureComponent`* is exactly the same as *`React.Component`* except that it handles the `shouldComponentUpdate()` method for you. When props or state changes, *PureComponent* will do a shallow comparison on both props and state. *Component* on the other hand won't compare current props and state and will re-render by default whenever `shouldComponentUpdate` is called.
 
 ### 8. What is state in React?
 
@@ -1724,7 +1724,7 @@ Page.propTypes = {
 
 ### 82. Why we need to pass a function to setState()?
 
-The reason behind for this is that `setState()` is an asynchronous operation. React batches state changes for performance reasons, so the state may not change immediately after `setState()` is called. That means you should not rely on the current state when calling `setState()` since you can't be sure what that state will be. The solution is to pass a function to `setState()`, with the previous state as an argument. By doing this you can avoid issues with the user getting the old state value on access due to the asynchronous nature of `setState()`.
+The reason behind this is that `setState()` is an asynchronous operation. React batches state changes for performance reasons, so the state may not change immediately after `setState()` is called. That means you should not rely on the current state when calling `setState()` since you can't be sure what that state will be. The solution is to pass a function to `setState()`, with the previous state as an argument. By doing this you can avoid issues with the user getting the old state value on access due to the asynchronous nature of `setState()`.
 
 Let's say the initial count value is zero. After three consecutive increment operations, the value is going to be incremented only by one.
 
@@ -1747,7 +1747,7 @@ this.setState((prevState, props) => ({
 
 ### 83. What is strict mode in React?
 
-`React.StrictMode` is an useful component for highlighting potential problems in an application. Just like `<Fragment>`, `<StrictMode>` does not render any extra DOM elements. It activates additional checks and warnings for its descendants. These checks apply for *development mode* only.
+`React.StrictMode` is a useful component for highlighting potential problems in an application. Just like `<Fragment>` and `<StrictMode>`, it does not render any extra DOM elements. It activates additional checks and warnings for its descendants. These checks apply for *development mode* only.
 
 ```jsx harmony
 import React from 'react'
@@ -1772,7 +1772,7 @@ In the example above, the *strict mode* checks apply to `<ComponentOne>` and `<C
 
 ### 84. What are React Mixins?
 
-*Mixins* are a way to totally separate components to have a common functionality. Mixins **should not be used** and can be replaced with *higher-order components* or *decorators*.
+*Mixins* are a way to totally separate components that have a common functionality. Mixins **should not be used** and can be replaced with *higher-order components* or *decorators*.
 
 One of the most commonly used mixins is `PureRenderMixin`. You might be using it in some components to prevent unnecessary re-renders when the props and state are shallowly equal to the previous props and state:
 
@@ -1812,7 +1812,7 @@ The following event types are now available in *React DOM*:
 3. `onPointerUp`
 4. `onPointerCancel`
 5. `onGotPointerCapture`
-6. `onLostPointerCaptur`
+6. `onLostPointerCapture`
 7. `onPointerEnter`
 8. `onPointerLeave`
 9. `onPointerOver`
