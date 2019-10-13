@@ -3166,7 +3166,29 @@ const rootReducer = (state, action) => {
 
 The **@** symbol is in fact a JavaScript expression used to signify decorators. *Decorators* make it possible to annotate and modify classes and properties at design time.
 
-Let's take an example setting up Redux without and with a decorator.
+Let's take an example of setting up Redux with and without a decorator.
+
+* **With decorator:**
+
+    ```javascript
+    import React from 'react'
+    import * as actionCreators from './actionCreators'
+    import { bindActionCreators } from 'redux'
+    import { connect } from 'react-redux'
+
+    function mapStateToProps(state) {
+      return { todos: state.todos }
+    }
+
+    function mapDispatchToProps(dispatch) {
+      return { actions: bindActionCreators(actionCreators, dispatch) }
+    }
+
+    @connect(mapStateToProps, mapDispatchToProps)
+    export default class MyApp extends React.Component {
+      // ...define your main app here
+    }
+    ```
 
 * **Without decorator:**
 
@@ -3191,33 +3213,11 @@ Let's take an example setting up Redux without and with a decorator.
     export default connect(mapStateToProps, mapDispatchToProps)(MyApp)
     ```
 
-* **With decorator:**
-
-    ```javascript
-    import React from 'react'
-    import * as actionCreators from './actionCreators'
-    import { bindActionCreators } from 'redux'
-    import { connect } from 'react-redux'
-
-    function mapStateToProps(state) {
-      return { todos: state.todos }
-    }
-
-    function mapDispatchToProps(dispatch) {
-      return { actions: bindActionCreators(actionCreators, dispatch) }
-    }
-
-    @connect(mapStateToProps, mapDispatchToProps)
-    export default class MyApp extends React.Component {
-      // ...define your main app here
-    }
-    ```
-
 The above examples are almost similar except the usage of decorator. The decorator syntax isn't built into any JavaScript runtimes yet, and is still experimental and subject to change. You can use babel for the decorators support.
 
 ### 165. What is the difference between React context and React Redux?
 
-You can use **Context** in your application directly and is going to be great for passing down data to deeply nested components which what it was designed for. Whereas **Redux** is much more powerful and provides a large number of features that the Context API doesn't provide. Also, React Redux uses context internally but it doesn't expose this fact in the public API.
+You can use **Context** in your application directly and this is going to be great for passing down data to deeply nested components which is what it was designed for. Whereas **Redux** is much more powerful and provides a large number of features that the Context API doesn't provide. Also, React Redux uses context internally but it doesn't expose this fact in the public API.
 
 ### 166. Why are Redux state functions called reducers?
 
@@ -3227,7 +3227,7 @@ Reducers always return the accumulation of the state (based on all previous and 
 
 You can use `redux-thunk` middleware which allows you to define async actions.
 
-Let's take an example of fetching specific account as an AJAX call using *fetch API*:
+Let's take an example of fetching a specific account as an AJAX call using *fetch API*:
 
 ```javascript
 export function fetchAccount(id) {
@@ -3542,7 +3542,7 @@ Follow the below steps to debug React Native app:
 
 ## React supported libraries & Integration
 
-### 192. What is reselect and how it works?
+### 192. What is reselect and how does it work?
 
 *Reselect* is a **selector library** (for Redux) which uses *memoization* concept. It was originally written to compute derived data from Redux-like applications state, but it can't be tied to any architecture or library.
 
@@ -3558,7 +3558,7 @@ Flow is a *static analysis tool* (static checker) which uses a superset of the l
 
 ### 195. How to use Font Awesome icons in React?
 
-The below steps followed to include Font Awesome in React:
+Follow the steps below to include Font Awesome in React:
 
 1. Install `font-awesome`:
 
@@ -3955,15 +3955,15 @@ return class Enhancer extends WrappedComponent {
 ```
 ### 218. How to pass numbers to React component?
 
-You should be passing the numbers via curly braces({}) where as strings inn quotes
+You should be passing the numbers via curly braces({}), where as strings are passed using quotes:
 
 ```jsx
   React.render(<User age={30} department={"IT"} />, document.getElementById('container'));
 ```
 ### 219. Do I need to keep all my state into Redux? Should I ever use react internal state?
-It is up to developer decision. i.e, It is developer job to determine what kinds of state make up your application, and where each piece of state should live. Some users prefer to keep every single piece of data in Redux, to maintain a fully serializable and controlled version of their application at all times. Others prefer to keep non-critical or UI state, such as “is this dropdown currently open”, inside a component's internal state.
+This is a developer decision. i.e, It is the developers job to determine what kinds of state make up your application, and where each piece of state should live. Some users prefer to keep all the data in Redux, to maintain a fully serializable and controlled version of their application at all times. Others prefer to keep non-critical or UI state, such as “is this dropdown currently open”, inside a component's internal state.
 
-Below are the thumb rules to determine what kind of data should be put into Redux
+Below are rules of thumb to determine what kind of data should be put into Redux:
 1. Do other parts of the application care about this data?
 2. Do you need to be able to create further derived data based on this original data?
 3. Is the same data being used to drive multiple components?
@@ -4021,7 +4021,7 @@ getUserProfile = user => {
 };
 ```
 ### 224. How do you render Array, Strings and Numbers in React 16 Version?
-**Arrays**: Unlike older releases, you don't need to make sure **render** method return a single element in React16. You are able to return multiple sibling elements without a wrapping element by returning an array. For example, let us take the below list of developers,
+**Arrays**: Unlike older releases, you don't need to make sure **render** method returns a single element in React16. You are able to return multiple sibling elements without a wrapping element by returning an array. For example, let us take the below list of developers,
 ```jsx
 const ReactJSDevs = () => {
   return [
@@ -4055,7 +4055,7 @@ return 2018;
 }
 ```
 ### 225. How to use class field declarations syntax in React classes?
-React Class Components can be made much more concise using the class field declarations. You can initialize local state without using the constructor and declare class methods by using arrow functions without the extra need to bind them. Let's take a counter example to demonstrate class field declarations for state without using constructor and methods without binding,
+React Class Components can be made much more concise using the class field declarations. You can initialize local state without using the constructor and declare class methods by using arrow functions without the extra need to bind them. Let's take a counter example to demonstrate class field declarations for state without using constructor and methods without binding:
 ```jsx
 class Counter extends Component {
   state = { value: 0 };
@@ -4085,7 +4085,7 @@ class Counter extends Component {
 }
 ```
 ### 226. What are hooks?
-Hooks is a new feature that lets you use state and other React features without writing a class. Let's see an example of useState hook example,
+Hooks is a new feature that lets you use state and other React features without writing a class. Let's see an example of useState hook example:
 ```jsx
 import { useState } from 'react';
 
@@ -4105,16 +4105,16 @@ function Example() {
 ```
 ### 227. What are the rules needs to follow for hooks?
 
-You need to follow two rules inorder to use hooks
+You need to follow two rules inorder to use hooks:
 1. Call Hooks only at the top level of your react functions. i.e, You shouldn’t call Hooks inside loops, conditions, or nested functions. This will ensure that Hooks are called in the same order each time a component renders and it preserves the state of Hooks between multiple useState and useEffect calls.
 2. Call Hooks from React Functions only. i.e, You shouldn’t call Hooks from regular JavaScript functions.
 
 ### 228. How to ensure hooks followed the rules in your project?
-React team released an ESLint plugin called **eslint-plugin-react-hooks** that enforces these two rules. You can add this plugin to your project using the below command,
+React team released an ESLint plugin called **eslint-plugin-react-hooks** that enforces these two rules. You can add this plugin to your project using the below command:
 ```javascript
 npm install eslint-plugin-react-hooks@next
 ```
-And apply the below config in your ESLint config file,
+And apply the below config in your ESLint config file:
 ```javascript
 // Your ESLint configuration
 {
@@ -4137,7 +4137,7 @@ Below are the major differences between Flux and Redux
 | ----- | ------- |
 | State is mutable | State is immutable |
 | The Store contains both state and change logic | The Store and change logic are separate |
-| There are multiple stores exist | There is only one store exist |
+| Multiple stores exist | Only one store exists |
 | All the stores are disconnected and flat | Single store with hierarchical reducers|
 | It has a singleton dispatcher | There is no concept of dispatcher |
 | React components subscribe to the store | Container components uses connect function|
@@ -4149,7 +4149,7 @@ Below are the main benefits of React Router V4 module,
 3. The application size is reduced by adding only the specific router module(Web, core, or native)
 
 ### 231. Can you describe about componentDidCatch lifecycle method signature?
-The **componentDidCatch** lifecycle method is invoked after an error has been thrown by a descendant component. The method receives two parameters,
+The **componentDidCatch** lifecycle method is invoked after an error has been thrown by a descendant component. The method receives two parameters:
 1. error: - The error object which was thrown
 2. info: - An object with a componentStack key contains the information about which component threw the error.
 
@@ -4159,14 +4159,14 @@ componentDidCatch(error, info)
 ```
 
 ### 232. In which scenarios error boundaries do not catch errors?
-Below are the cases in which error boundaries doesn't work
+Below are the cases in which error boundaries doesn't work:
 1. Inside Event handlers
 2. Asynchronous code using **setTimeout or requestAnimationFrame** callbacks
 3. During Server side rendering
 4. When errors thrown in the error boundary code itself
 
 ### 233. Why do not you need error boundaries for event handlers?
-Error boundaries do not catch errors inside event handlers. Event handlers don't happened or invoked during rendering time unlike render method or lifecycle methods. So React knows how to recover these kind of errors in event handlers.
+Error boundaries do not catch errors inside event handlers. Event handlers don't happened or get invoked during rendering time unlike render method or lifecycle methods. So React knows how to recover these kind of errors in event handlers.
 If still you need to catch an error inside event handler, use the regular JavaScript try / catch statement as below
 ```javascript
 class MyComponent extends React.Component {
@@ -4177,7 +4177,7 @@ class MyComponent extends React.Component {
 
   handleClick = () => {
     try {
-      // Do something that could throw
+      // Do something that could throw an error
     } catch (error) {
       this.setState({ error });
     }
@@ -4215,30 +4215,31 @@ So if an error occurs in a **componentDidUpdate** method caused by a **setState*
 In React 16, errors that were not caught by any error boundary will result in unmounting of the whole React component tree. The reason behind this decision is that it is worse to leave corrupted UI in place than to completely remove it. For example, it is worse for a payments app to display a wrong amount than to render nothing.
 
 ### 236. What is the proper placement for error boundaries?
-The granularity of error boundaries usage is up to the developer based on project needs. You can follow either of these approaches,
+The granularity of error boundaries usage is up to the developer based on the projects needs. You can follow either of these approaches:
 1. You can wrap top-level route components to display a generic error message for the entire application.
 2. You can also wrap individual components in an error boundary to protect them from crashing the rest of the application.
 
 ### 237. What is the benefit of component stack trace from error boundary?
-Apart from error messages and javascript stack, React16 will display the component stack trace with file names and line numbers using error boundary concept. For example, BuggyCounter component displays the component stack trace as below,
+Apart from error messages and javascript stack, React16 will display the component stack trace with file names and line numbers using error boundary concept. For example, BuggyCounter component displays the component stack trace as below:
 
 ![stacktrace](images/error_boundary.png)
 
 ### 238. What is the required method to be defined for a class component?
 The render() method is the only required method in a class component. i.e, All methods other than render method are optional for a class component.
-### 239. What are the possible return types of render method?
-Below are the list of following types used and return from render method,
+### 239. What are the possible return tyAes of render method?
+Below are the list of following types used and return from render method:
 1. **React elements:** Elements that instruct React to render a DOM node. It includes html elements such as `<div/>` and user defined elements.
-2. **Arrays and fragments:** Return multiple elements to render as Arrays and Fragments to wrap multiple elements
+2. **Arrays and fragments:** Return multiple elements to render as Arrays and Fragments to wrap multiple elements.
 3. **Portals:** Render children into a different DOM subtree.
 4. **String and numbers:** Render both Strings and Numbers as text nodes in the DOM
 5. **Booleans or null:** Doesn't render anything but these types are used to conditionally render content.
 
 ### 240. What is the main purpose of constructor?
-The constructor is mainly used for two purposes,
+The constructor is mainly used for two purposes:
 1. To initialize local state by assigning object to this.state
 2. For binding event handler methods to the instance
-For example, the below code covers both the above cases,
+
+For example, the below code covers both the above cases:
 ```javascript
 constructor(props) {
   super(props);
