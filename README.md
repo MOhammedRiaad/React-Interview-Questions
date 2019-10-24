@@ -2,7 +2,7 @@
 
 > Click :star:if you like the project. Pull Request are highly appreciated.
 
-> If you have more questions about reactjs feel free to add them using pull request
+## If you have more questions about reactjs feel free to add them using pull request
 
 ### Table of Contents
 
